@@ -16,23 +16,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="twitter but red." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gou-AT-epS">
+                                <rect key="frame" x="50" y="315" width="275" height="37"/>
+                                <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="37"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zov-Mv-C5J">
-                                <rect key="frame" x="127" y="424" width="121" height="57"/>
+                                <rect key="frame" x="148" y="373" width="79" height="57"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="57" id="5Mo-eR-z0D"/>
-                                    <constraint firstAttribute="width" constant="121" id="mbo-gL-gBD"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="27"/>
-                                <state key="normal" title="LOGIN"/>
+                                <state key="normal" title="LOGIN">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="onLoginButton:" destination="MG5-Ej-IYE" eventType="touchUpInside" id="f3l-LE-tfV"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.5" green="0.0" blue="0.02415480666" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
+                            <constraint firstItem="Gou-AT-epS" firstAttribute="centerY" secondItem="vuJ-rh-6fV" secondAttribute="centerY" id="VKj-rH-ofv"/>
                             <constraint firstItem="Zov-Mv-C5J" firstAttribute="centerX" secondItem="vuJ-rh-6fV" secondAttribute="centerX" id="a4G-8U-llI"/>
-                            <constraint firstItem="Zov-Mv-C5J" firstAttribute="centerY" secondItem="vuJ-rh-6fV" secondAttribute="centerY" constant="119" id="d1n-Vi-IBY"/>
+                            <constraint firstItem="Zov-Mv-C5J" firstAttribute="centerY" secondItem="vuJ-rh-6fV" secondAttribute="centerY" constant="68" id="d1n-Vi-IBY"/>
+                            <constraint firstItem="Gou-AT-epS" firstAttribute="centerX" secondItem="vuJ-rh-6fV" secondAttribute="centerX" id="ugG-o6-n8L"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="c3A-4t-oEl"/>
                     </view>
@@ -51,7 +60,8 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="wuP-bb-xuL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.5" green="0.0" blue="0.02415480666" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="separatorColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tweetCell" rowHeight="126" id="2w5-5V-C8A" customClass="TweetCellTableViewCell" customModule="Twitter" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="126"/>
@@ -60,7 +70,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="126"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uCk-ur-Lx0">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uCk-ur-Lx0">
                                             <rect key="frame" x="16" y="11" width="65" height="65"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="65" id="K99-IC-AuB"/>
@@ -70,16 +80,17 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="John Doe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BYN-9k-Abj">
                                             <rect key="frame" x="89" y="11" width="77" height="20.5"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                            <nil key="textColor"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rsz-3z-Y8A">
                                             <rect key="frame" x="89" y="35.5" width="270" height="79.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <color key="backgroundColor" red="0.31930051813471505" green="0.10682509446766576" blue="0.083626345825512163" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <constraints>
                                         <constraint firstItem="BYN-9k-Abj" firstAttribute="top" secondItem="Xno-cR-j0N" secondAttribute="topMargin" id="8tw-Kp-j9v"/>
                                         <constraint firstItem="rsz-3z-Y8A" firstAttribute="trailing" secondItem="Xno-cR-j0N" secondAttribute="trailingMargin" id="Bg1-sq-Sit"/>
@@ -91,6 +102,7 @@
                                         <constraint firstItem="rsz-3z-Y8A" firstAttribute="bottom" secondItem="Xno-cR-j0N" secondAttribute="bottomMargin" id="tcM-do-Opo"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.5" green="0.0" blue="0.02415480666" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <connections>
                                     <outlet property="profileImage" destination="uCk-ur-Lx0" id="PRa-eg-ALU"/>
                                     <outlet property="tweetContent" destination="rsz-3z-Y8A" id="51t-3E-AUE"/>
@@ -123,7 +135,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Awx-zO-Ne4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.46897243942475753" green="0.73985402643817777" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="barTintColor" red="0.5" green="0.0" blue="0.02415480666068115" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
