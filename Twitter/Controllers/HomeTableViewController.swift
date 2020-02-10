@@ -20,6 +20,7 @@ class HomeTableViewController: UITableViewController {
         
         loadTweets()
         
+        //Refreshing Icon
         myRefreshControl.addTarget(self, action: #selector(loadTweets), for: .valueChanged)
         tableView.refreshControl = myRefreshControl
     }
@@ -30,7 +31,9 @@ class HomeTableViewController: UITableViewController {
         numberOfTweets = 20
         
         let myUrl = "https://api.twitter.com/1.1/statuses/home_timeline.json"
+        
         let myParams = ["count": numberOfTweets]
+        print(myUrl)
         
         TwitterAPICaller.client?.getDictionariesRequest(url: myUrl, parameters: myParams, success:
             { (tweets: [NSDictionary]) in
@@ -51,7 +54,7 @@ class HomeTableViewController: UITableViewController {
     
     func loadMoreTweets(){
         
-        let myUrl = "https://api.twitter.com/1.1/statuses/home_timeline.json"
+        let myUrl = Urls.tweetUrls.rawValue
         
         numberOfTweets = numberOfTweets + 20
         let myParams = ["count": numberOfTweets]
@@ -84,18 +87,18 @@ class HomeTableViewController: UITableViewController {
     @IBAction func onLogout(_ sender: Any) {
         TwitterAPICaller.client?.logout()
         self.dismiss(animated: true, completion: nil)
-        UserDefaults.standard.set(false, forKey: "userLoggedIn")
+        UserDefaults.standard.set(false, forKey: UserDefaultsKeys.userLoggedIn.rawValue)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "tweetCell", for: indexPath) as! TweetCellTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Cells.tweetCell.rawValue, for: indexPath) as! TweetCellTableViewCell
         
-        let user = tweetArray[indexPath.row]["user"] as! NSDictionary
+        let user = createUser(userDictionary: tweetArray[indexPath.row]["user"] as! NSDictionary)
         
-        cell.usernameLabel.text = user["name"] as? String
+        cell.usernameLabel.text = user.name
         cell.tweetContent.text = tweetArray[indexPath.row]["text"] as? String
         
-        let imageURL = URL(string: (user["profile_image_url_https"] as? String)!)
+        let imageURL = URL(string: user.profilePicUrl!)
         let data = try? Data(contentsOf: imageURL!)
         
         if let imageData = data {
@@ -104,6 +107,15 @@ class HomeTableViewController: UITableViewController {
         
         
         return cell
+    }
+    
+    func createUser(userDictionary: NSDictionary) -> User {
+        let name = userDictionary["name"] as? String
+        let profilePicUrl = userDictionary["profile_image_url_https"] as? String
+        
+        let user = User(name: name, profilePicUrl: profilePicUrl)
+        
+        return user
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
