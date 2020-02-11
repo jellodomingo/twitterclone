@@ -64,4 +64,27 @@ class TwitterAPICaller: BDBOAuth1SessionManager {
         })
     }
     
+    func postTweet(tweetString: String, success: @escaping () -> (), failure: @escaping (Error) -> ()){
+        let url = Urls.postTweetUrl.rawValue
+        TwitterAPICaller.client?.post(url, parameters: ["status": tweetString], progress: nil, success: { (task: URLSessionDataTask, response: Any?) in success()}
+            , failure: { (task: URLSessionDataTask?, error: Error) in
+                failure(error)
+        })
+    }
+    
+    func likeTweet(tweetId: Int, success: @escaping () -> (), failure: @escaping (Error) -> ()) {
+        let url = Urls.likeTweetUrl.rawValue
+        TwitterAPICaller.client?.post(url, parameters: ["id": tweetId], progress: nil, success: { (task: URLSessionDataTask, response: Any?) in success()}
+            , failure: { (task: URLSessionDataTask?, error: Error) in
+                failure(error)
+        })
+    }
+    
+    func unlikeTweet(tweetId: Int, success: @escaping () -> (), failure: @escaping (Error) -> ()) {
+        let url = Urls.unlikeTweetUrl.rawValue
+        TwitterAPICaller.client?.post(url, parameters: ["id": tweetId], progress: nil, success: { (task: URLSessionDataTask, response: Any?) in success()}
+            , failure: { (task: URLSessionDataTask?, error: Error) in
+                failure(error)
+        })
+    }
 }

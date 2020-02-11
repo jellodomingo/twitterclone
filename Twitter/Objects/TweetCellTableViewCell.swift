@@ -13,7 +13,11 @@ class TweetCellTableViewCell: UITableViewCell {
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var tweetContent: UILabel!
+    @IBOutlet weak var favButton: UIButton!
+    @IBOutlet weak var rtButton: UIButton!
     
+    var liked: Bool = false
+    var tweetId: Int = -1
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,4 +30,36 @@ class TweetCellTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    @IBAction func retweet(_ sender: Any) {
+    }
+    
+    func setLiked(_ isLiked: Bool)
+    {
+        liked = isLiked
+        if(liked) {
+            favButton.setImage(UIImage(named: "favor-icon-red"), for: UIControl.State.normal)
+        } else {
+            favButton.setImage(UIImage(named: "favor-icon"), for: UIControl.State.normal)
+        }
+    }
+    
+    @IBAction func likeTweet(_ sender: Any) {
+        let tobeLiked = !liked
+        if(tobeLiked) {
+            TwitterAPICaller.client?.likeTweet(tweetId: tweetId, success:
+                {
+                    self.setLiked(true)
+            }, failure: { (error) in
+                print("Like did not succeed: \(error)")
+            })
+        }
+        else{
+            TwitterAPICaller.client?.unlikeTweet(tweetId: tweetId, success:
+                {
+                    self.setLiked(false)
+            }, failure: { (error) in
+                print("Unlike did not succeed: \(error)")
+            })
+        }
+    }
 }

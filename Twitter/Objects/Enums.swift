@@ -11,6 +11,10 @@ import Foundation
 enum Urls: String {
     case loginUrl = "https://api.twitter.com/oauth/request_token"
     case tweetUrls = "https://api.twitter.com/1.1/statuses/home_timeline.json"
+    case postTweetUrl = "https://api.twitter.com/1.1/statuses/update.json"
+    case likeTweetUrl = "https://api.twitter.com/1.1/favorites/create.json"
+    case unlikeTweetUrl = "https://api.twitter.com/1.1/favorites/destroy.json"
+    case retweetUrl = ""
 }
 
 enum SeguesIdentifier: String {
