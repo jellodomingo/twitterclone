@@ -17,6 +17,7 @@ class TweetCellTableViewCell: UITableViewCell {
     @IBOutlet weak var rtButton: UIButton!
     
     var liked: Bool = false
+    var retweeted: Bool = false
     var tweetId: Int = -1
     
     override func awakeFromNib() {
@@ -30,7 +31,35 @@ class TweetCellTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    func setRetweet(_ isRetweet: Bool)
+    {
+        retweeted = isRetweet
+        if(retweeted) {
+            rtButton.setImage(UIImage(named: "retweet-icon-green"), for: UIControl.State.normal)
+        } else {
+            rtButton.setImage(UIImage(named: "retweet-icon"), for: UIControl.State.normal)
+        }
+    }
+    
+    
     @IBAction func retweet(_ sender: Any) {
+        let tobeRetweet = !retweeted
+        if(tobeRetweet) {
+            TwitterAPICaller.client?.retweetTweet(tweetId: tweetId, success:
+                    {
+                        self.setRetweet(true)
+                }, failure: { (error) in
+                    print("Retweet did not succeed: \(error)")
+                })
+            }
+            else{
+                TwitterAPICaller.client?.unretweetTweet(tweetId: tweetId, success:
+                    {
+                        self.setRetweet(false)
+                }, failure: { (error) in
+                    print("Unretweet did not succeed: \(error)")
+                })
+        }
     }
     
     func setLiked(_ isLiked: Bool)

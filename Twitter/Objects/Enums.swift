@@ -14,7 +14,8 @@ enum Urls: String {
     case postTweetUrl = "https://api.twitter.com/1.1/statuses/update.json"
     case likeTweetUrl = "https://api.twitter.com/1.1/favorites/create.json"
     case unlikeTweetUrl = "https://api.twitter.com/1.1/favorites/destroy.json"
-    case retweetUrl = ""
+    case retweetUrl = "https://api.twitter.com/1.1/statuses/retweet/:id.json"
+    case unretweetUrl = "https://api.twitter.com/1.1/statuses/unretweet/:id.json"
 }
 
 enum SeguesIdentifier: String {
