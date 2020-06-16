@@ -1,11 +1,9 @@
-# Twitter Clone Application
+# Twitter Clone Application - Twitter but red.
 
-This is a basic twitter app to view, compose, favorite, and retweet tweets.
+A basic twitter clone app to view, compose, favorite, and retweet tweets. This was made using Swift and Twitter's API.
 
-<img src= 'http://g.recordit.co/0ngfCYEBKQ.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
-
-## Video Walkthrough
-
-Here's a walkthrough of the application:
+Skills learned:
+- Basic API calls using Twitter API
+- Swift TableView Features and Applications
 
 <img src='http://g.recordit.co/p5vipzb6W7.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
